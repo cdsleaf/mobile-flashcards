@@ -11,6 +11,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { purple, white } from './utils/colors';
 import Decks from './components/Decks';
 import AddDeck from './components/AddDeck';
+import DeckMain from './components/DeckMain';
 
 function MobileStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -68,6 +69,15 @@ const MainNavigator = createStackNavigator({
       header: null,
     }
   },
+  DeckMain: {
+    screen: DeckMain,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    }
+  }
 })
 
 const MainContainer = createAppContainer(MainNavigator);
