@@ -9,7 +9,7 @@ class Decks extends Component {
         renderItem={({item}) => (
           <TouchableOpacity onPress={() => this.props.navigation.navigate(
             'DeckMain',
-            { deckId: item.key }
+            { deckId: item.key, title: item.key }
           )}>
           <Text>{item.key}</Text>
           </TouchableOpacity>

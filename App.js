@@ -12,6 +12,7 @@ import { purple, white } from './utils/colors';
 import Decks from './components/Decks';
 import AddDeck from './components/AddDeck';
 import DeckMain from './components/DeckMain';
+import AddCard from './components/AddCard';
 
 function MobileStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -71,7 +72,18 @@ const MainNavigator = createStackNavigator({
   },
   DeckMain: {
     screen: DeckMain,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.title,
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    })
+  },
+  AddCard: {
+    screen: AddCard,
     navigationOptions: {
+      title: 'Add Card',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple,
