@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
+import TextButton from './TextButton';
 
 class Decks extends Component {
   render() {
@@ -7,12 +8,19 @@ class Decks extends Component {
     return (
       <View>
         <Text>Deck Main! {deckId}</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(
-          'AddCard',
-          { entryId: deckId }
-        )}>
-          <Text>Add Card</Text>
-        </TouchableOpacity>
+        <TextButton 
+          name={'Add Card'} 
+          onPress={() => this.props.navigation.navigate(
+            'AddCard',
+            { entryId: deckId }
+          )} 
+          style={{margin: 20}} />
+        <TextButton 
+          name={'Start Quiz'} 
+          style={{margin: 20}} />
+        <TextButton 
+          name={'Delete Deck'} 
+          style={{margin: 20}} />
       </View>
     )
   }

@@ -12,9 +12,10 @@ class AddCard extends Component {
     return (
       <View>
         <Text>add card {deckId}</Text>
-        <TextButton onPress={this.Submit} style={{margin: 20}}>
-          Submit
-        </TextButton>
+        <TextButton 
+          name={'Submit'} 
+          onPress={this.Submit} 
+          style={{margin: 20}} />
       </View>
     )
   }
