@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import TextButton from './TextButton';
 
 class Decks extends Component {
@@ -26,4 +27,4 @@ class Decks extends Component {
   }
 }
 
-export default Decks;
+export default connect()(Decks);

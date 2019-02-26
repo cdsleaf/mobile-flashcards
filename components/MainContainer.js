@@ -6,11 +6,11 @@ import {
   createStackNavigator,   
 } from 'react-navigation';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'; 
-import { purple, white } from './utils/colors';
-import Decks from './components/Decks';
-import AddDeck from './components/AddDeck';
-import DeckMain from './components/DeckMain';
-import AddCard from './components/AddCard';
+import { purple, white } from '../utils/colors';
+import Decks from './Decks';
+import AddDeck from './AddDeck';
+import DeckMain from './DeckMain';
+import AddCard from './AddCard';
 
 const RouteConfigs = {
   Decks: {
