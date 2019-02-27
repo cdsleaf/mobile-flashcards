@@ -13,11 +13,8 @@ export function getDeck(deckId){
 
 export function addDeck(title){
   const newDeck = {
-    deckId: title,
-    deck: {
       title,
       questions: [],
-    }
   }
   return submitDeck(newDeck, title);
 };

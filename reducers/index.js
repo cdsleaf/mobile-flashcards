@@ -13,8 +13,8 @@ export default function decks (state={}, action) {
     case ADD_NEW_DECK:
       return {
         ...state,
-        [action.deck.title]: {
-          title: deck.title,
+        [action.title]: {
+          title: action.title,
           questions: [],
         },
       };

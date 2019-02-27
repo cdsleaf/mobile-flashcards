@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { handlInitialData } from '../actions';
 
 class Decks extends Component {
 
   componentDidMount(){
-    handlInitialData();
+    this.props.dispatch(handlInitialData());
   }
 
   render() {
     return (
       <FlatList
         data={this.props.decks}
-        renderItem={(deck) => (
-          <TouchableOpacity onPress={() => this.props.navigation.navigate(
-            'DeckMain',
-            { title: deck.title }
-          )}>
-            <Text>{item.key}</Text>
-            <Text>{item.key}</Text>
+        keyExtractor={item => item.title}
+        renderItem={({item}) => (
+          <TouchableOpacity 
+            onPress={() => this.props.navigation.navigate(
+              'DeckMain',
+              { title: item.title }
+            )}
+          >
+            <View style={styles.deck}>
+              <Text style={styles.deckTitle}>{item.title}</Text>
+              <Text style={styles.cardsCount}>{item.questions.length} cards</Text>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -27,9 +32,26 @@ class Decks extends Component {
   }
 }
 
-function mapStateToProps({ decks }){console.log("2222", decks)
+const styles = StyleSheet.create({
+  deck: {
+    flex: 1,
+    borderWidth: 0.5,
+    padding: 30
+  },
+  deckTitle: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  cardsCount: {
+    textAlign: 'center',
+    fontSize: 15,
+  }
+})
+
+function mapStateToProps(decks){
   return {
-    decks: decks !== undefined ? Object.values(decks) : [],
+    decks: Object.values(decks),
   }
 }
 

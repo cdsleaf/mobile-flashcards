@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { addNewDeck } from '../actions';
+import { connect } from 'react-redux';
 import TextButton from './TextButton';
+import { black, white } from '../utils/colors'
 
 class AddEntry extends Component {
 
@@ -18,25 +20,59 @@ class AddEntry extends Component {
       return;
     }
 
-    addNewDeck(this.state.title);
+    this.props.dispatch(addNewDeck(this.state.title));
   }
 
   render() {
     return (
-      <View>
-        <Text>What is the title of your new deck?</Text>
+      <View style={styles.addDeck}>
+        <Text style={styles.addDeckQuestion}>
+          What is the title of your new deck?
+        </Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.newDeckTitleinput}
           onChangeText={(title) => this.setState({title})}
+          placeholder='Deck Title'
           value={this.state.title}
         />
-        <TextButton 
-          name={'Submit'} 
-          onPress={this.Submit} 
-          style={{margin: 20}} />
+        <View>
+          <TextButton 
+            name={'Submit'} 
+            onPress={this.Submit} 
+            style={styles.submitButton} />
+        </View>
       </View>
     )
   }
 }
 
-export default AddEntry;
+const styles = StyleSheet.create({
+  addDeck: {
+    flex: 1,
+    padding: 30
+  },
+  addDeckQuestion: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  newDeckTitleinput: {
+    height: 40, 
+    borderColor: 'gray', 
+    borderWidth: 1,
+    padding: 10,
+    margin: 20,
+  },
+  submitButton: {
+    width: 100,
+    height: 50,
+    backgroundColor: black,
+    color: white,
+    textAlign: 'center',
+    fontSize: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
+})
+
+export default connect()(AddEntry);

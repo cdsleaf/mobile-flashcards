@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 const CALENDAR_STORAGE_KEY = 'mobileFlashCards:Decks';
 
 export function fetchDecksResult() {
-  return AsyncStorage.getItem(CALENDAR_STORAGE_KEY);
+  return AsyncStorage.getItem(CALENDAR_STORAGE_KEY).then(decks => JSON.parse(decks));
 }
 
 export function submitDeck( deck, deckId ) {
