@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from './TextButton';
 
@@ -8,7 +8,8 @@ class Decks extends Component {
     const { deckId } = this.props.navigation.state.params;
     return (
       <View>
-        <Text>Deck Main! {deckId}</Text>
+        <Text style={styles.deckTitle}>{item.title}</Text>
+        <Text style={styles.cardsCount}>{item.questions.length} cards</Text>
         <TextButton 
           name={'Add Card'} 
           onPress={() => this.props.navigation.navigate(
@@ -26,5 +27,17 @@ class Decks extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  deckTitle: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  cardsCount: {
+    textAlign: 'center',
+    fontSize: 15,
+  }
+})
 
 export default connect()(Decks);
