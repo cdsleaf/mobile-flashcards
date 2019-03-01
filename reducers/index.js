@@ -1,6 +1,7 @@
 import { 
   RECEIVE_DECKS,
-  ADD_NEW_DECK
+  ADD_NEW_DECK,
+  ADD_NEW_CARD,
 } from '../actions/index';
 
 export default function decks (state={}, action) {
@@ -18,6 +19,17 @@ export default function decks (state={}, action) {
           questions: [],
         },
       };
+    case ADD_NEW_CARD:
+      return {
+        ...state,
+        [action.deckId]: {
+          ...state[action.deckId],
+          questions: [
+            ...state[action.deckId].questions,
+            action.newCard,
+          ]
+        }
+      }
     default: 
       return state;
   }

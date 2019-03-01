@@ -20,7 +20,14 @@ export function addDeck(title){
 };
 
 export function addCardToDeck(deckId, newCard){
-  let deck = getDeck(deckId);
-  deck['questions'] = [ ...deck['questions'], newCard];
-  return submitDeck(deck, deckId);
+  return getDeck(deckId).then(deck => {
+    const newDeck = {
+      ...deck,
+      questions: [
+        ...deck.questions,
+        newCard
+      ]
+    };  
+    return submitDeck(newDeck, deckId);
+  }); 
 };

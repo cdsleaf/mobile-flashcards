@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from './TextButton';
+import { black, white } from '../utils/colors'
 
 class Decks extends Component {
   render() {
@@ -18,13 +19,19 @@ class Decks extends Component {
             'AddCard',
             { deckId }
           )} 
-          style={{margin: 20}} />
+          buttonStyle={styles.submitButton}
+          textStyle={styles.submitButtonText} 
+        />
         <TextButton 
           name={'Start Quiz'} 
-          style={{margin: 20}} />
+          buttonStyle={styles.submitButton}
+          textStyle={styles.submitButtonText} 
+        />
         <TextButton 
-          name={'Delete Deck'} 
-          style={{margin: 20}} />
+          name={'Delete Deck'}
+          buttonStyle={styles.submitButton}
+          textStyle={styles.submitButtonText}  
+         />
       </View>
     )
   }
@@ -43,6 +50,19 @@ const styles = StyleSheet.create({
   cardsCount: {
     textAlign: 'center',
     fontSize: 15,
+  },
+  submitButton: {
+    width: 200,
+    height: 50,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundColor: black,
+    borderRadius: 5,
+    marginTop: 30 
+  },
+  submitButtonText: {
+    color: white,
+    fontSize: 20,
   }
 })
 

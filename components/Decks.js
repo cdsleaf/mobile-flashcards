@@ -18,7 +18,10 @@ class Decks extends Component {
           <TouchableOpacity 
             onPress={() => this.props.navigation.navigate(
               'DeckMain',
-              { deckId: item.title }
+              { 
+                deckId: item.title,
+                title: item.title
+              }
             )}
           >
             <View style={styles.deck}>
