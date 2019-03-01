@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { addNewDeck } from '../actions';
 import { connect } from 'react-redux';
 import TextButton from './TextButton';
-import { black, white } from '../utils/colors'
+import { black, white, gray } from '../utils/colors'
 
 class AddEntry extends Component {
 
@@ -35,12 +35,11 @@ class AddEntry extends Component {
           placeholder='Deck Title'
           value={this.state.title}
         />
-        <View>
-          <TextButton 
-            name={'Submit'} 
-            onPress={this.Submit} 
-            style={styles.submitButton} />
-        </View>
+        <TextButton 
+          name={'Submit'} 
+          onPress={this.Submit} 
+          buttonStyle={styles.submitButton}
+          textStyle={styles.submitButtonText} />
       </View>
     )
   }
@@ -58,20 +57,22 @@ const styles = StyleSheet.create({
   },
   newDeckTitleinput: {
     height: 40, 
-    borderColor: 'gray', 
+    borderColor: gray, 
     borderWidth: 1,
     padding: 10,
     margin: 20,
   },
   submitButton: {
-    width: 100,
+    width: 150,
     height: 50,
-    backgroundColor: black,
-    color: white,
-    textAlign: 'center',
-    fontSize: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
+    backgroundColor: black,
+    borderRadius: 5,
+  },
+  submitButtonText: {
+    color: white,
+    fontSize: 20,
   }
 })
 

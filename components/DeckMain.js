@@ -5,16 +5,18 @@ import TextButton from './TextButton';
 
 class Decks extends Component {
   render() {
-    const { deckId } = this.props.navigation.state.params;
+    const { deckId, deck } = this.props;
     return (
       <View>
-        <Text style={styles.deckTitle}>{item.title}</Text>
-        <Text style={styles.cardsCount}>{item.questions.length} cards</Text>
+        <View style={styles.deckInfo}>
+          <Text style={styles.deckTitle}>{deck.title}</Text>
+          <Text style={styles.cardsCount}>{deck.questions.length} cards</Text>
+        </View>  
         <TextButton 
           name={'Add Card'} 
           onPress={() => this.props.navigation.navigate(
             'AddCard',
-            { entryId: deckId }
+            { deckId }
           )} 
           style={{margin: 20}} />
         <TextButton 
@@ -29,6 +31,10 @@ class Decks extends Component {
 }
 
 const styles = StyleSheet.create({
+  deckInfo: {
+    marginTop: 80,
+    marginBottom: 80,
+  },
   deckTitle: {
     textAlign: 'center',
     fontSize: 30,
@@ -40,4 +46,12 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(Decks);
+function mapStateToProps(decks, props) {
+  const { deckId } = props.navigation.state.params;
+  return {
+    deckId,
+    deck: decks[deckId],
+  }
+}
+
+export default connect(mapStateToProps)(Decks);
