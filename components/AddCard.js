@@ -16,7 +16,7 @@ class AddCard extends Component {
     }
   }
 
-  Submit = () => {
+  submit = () => {
 
     if(this.state.question === ''){
       alert("Question input is an empty!");
@@ -39,9 +39,7 @@ class AddCard extends Component {
   }
 
   toDeckMain = () => {
-    this.props.navigation.dispatch(NavigationActions.back({
-      key:'AddCard'
-    }))
+    this.props.navigation.dispatch(NavigationActions.back());
   }
 
   render() {
@@ -61,7 +59,7 @@ class AddCard extends Component {
         />
         <TextButton 
           name={'Submit'} 
-          onPress={this.Submit} 
+          onPress={this.submit} 
           buttonStyle={styles.submitButton}
           textStyle={styles.submitButtonText} 
         />

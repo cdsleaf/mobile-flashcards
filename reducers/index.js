@@ -2,6 +2,7 @@ import {
   RECEIVE_DECKS,
   ADD_NEW_DECK,
   ADD_NEW_CARD,
+  REMOVE_DECK,
 } from '../actions/index';
 
 export default function decks (state={}, action) {
@@ -30,6 +31,13 @@ export default function decks (state={}, action) {
           ]
         }
       }
+    case REMOVE_DECK:
+      return Object.keys(state)
+        .filter(key => key !== action.deckId)
+        .reduce((obj, key) => {
+          obj[key] = state[key];
+          return obj;
+        }, {});
     default: 
       return state;
   }

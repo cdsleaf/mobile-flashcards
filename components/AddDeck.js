@@ -15,7 +15,7 @@ class AddEntry extends Component {
     }
   }
 
-  Submit = () => {
+  submit = () => {
     if(this.state.title === ''){
       alert("Title input is an empty!");
       return;
@@ -50,7 +50,7 @@ class AddEntry extends Component {
         />
         <TextButton 
           name={'Submit'} 
-          onPress={this.Submit} 
+          onPress={this.submit} 
           buttonStyle={styles.submitButton}
           textStyle={styles.submitButtonText} 
         />
