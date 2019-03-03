@@ -36,6 +36,10 @@ const Decks = (props) => {
       />
       <TextButton 
         name={'Start Quiz'} 
+        onPress={() => navigation.navigate(
+          'Card',
+          { deckId }
+        )} 
         buttonStyle={styles.submitButton}
         textStyle={styles.submitButtonText} 
       />

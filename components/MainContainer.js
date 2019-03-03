@@ -11,6 +11,7 @@ import Decks from './Decks';
 import AddDeck from './AddDeck';
 import DeckMain from './DeckMain';
 import AddCard from './AddCard';
+import Card from './Card';
 
 const RouteConfigs = {
   Decks: {
@@ -74,6 +75,16 @@ const MainNavigator = createStackNavigator({
     screen: AddCard,
     navigationOptions: {
       title: 'Add Card',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    }
+  },
+  Card: {
+    screen: Card,
+    navigationOptions: {
+      title: 'Card',
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple,
