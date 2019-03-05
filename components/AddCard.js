@@ -35,6 +35,14 @@ class AddCard extends Component {
     this.toDeckMain();
   }
 
+  handleChangeQuestion = (question) => {
+    this.setState({question})
+  }
+
+  handleChangeAnswer = (answer) => {
+    this.setState({answer})
+  }
+
   toDeckMain = () => {
     this.props.navigation.dispatch(NavigationActions.back());
   }
@@ -44,13 +52,13 @@ class AddCard extends Component {
       <View>
         <TextInput
           style={styles.newCardInfo}
-          onChangeText={(question) => this.setState({question})}
+          onChangeText={this.handleChangeQuestion}
           placeholder='question'
           value={this.state.question}
         />
         <TextInput
           style={styles.newCardInfo}
-          onChangeText={(answer) => this.setState({answer})}
+          onChangeText={this.handleChangeAnswer}
           placeholder='answer'
           value={this.state.answer}
         />
