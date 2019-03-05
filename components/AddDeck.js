@@ -5,13 +5,10 @@ import { connect } from 'react-redux';
 import TextButton from './TextButton';
 import { black, white, gray } from '../utils/colors'
 
-class AddEntry extends Component {
+class AddDeck extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      title: '',
-    }
+  state = {
+    title: '',
   }
 
   submit = () => {
@@ -89,4 +86,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(AddEntry);
+export default connect()(AddDeck);

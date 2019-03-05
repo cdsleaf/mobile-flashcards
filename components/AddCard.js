@@ -8,12 +8,9 @@ import { black, white, gray } from '../utils/colors'
 
 class AddCard extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      question: '',
-      answer: '',
-    }
+  state = {
+    question: '',
+    answer: '',
   }
 
   submit = () => {
