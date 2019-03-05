@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { addNewDeck } from '../actions';
 import { connect } from 'react-redux';
-import { NavigationActions }from 'react-navigation';
 import TextButton from './TextButton';
 import { black, white, gray } from '../utils/colors'
 
@@ -23,17 +22,17 @@ class AddEntry extends Component {
 
     this.props.dispatch(addNewDeck(this.state.title));
 
+    this.props.navigation.navigate(
+      'DeckMain',
+      { 
+        deckId: this.state.title,
+        title: this.state.title
+      }
+    )
+
     this.setState(state => ({
       title: ''
     }));
-
-    this.toHome();
-  }
-
-  toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({
-      key:'AddDecks'
-    }))
   }
 
   render() {
