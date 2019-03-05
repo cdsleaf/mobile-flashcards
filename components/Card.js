@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions }from 'react-navigation';
@@ -8,7 +8,7 @@ import { black, white, gray, red } from '../utils/colors'
 const FRONT_BUTTON = 'Answer';
 const BACK_BUTTON = 'Question';
 
-class Card extends Component {
+class Card extends PureComponent {
 
   state = {
     currentQuestionNumber: 0,
