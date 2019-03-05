@@ -38,7 +38,7 @@ export function addCardToDeck(deckId, newCard){
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notification.scheduleLocalNotificationAsync)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
 function createNotification () {
