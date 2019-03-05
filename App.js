@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, StatusBar } from 'react-native';
 import { Constants } from 'expo';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers';
-import middleware from './middleware';
+import createdStore from './store';
 import { purple } from './utils/colors';
 import MainContainer from './components/MainContainer';
 
@@ -19,7 +17,7 @@ function MobileStatusBar ({ backgroundColor, ...props }) {
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer, middleware)}>
+      <Provider store={createdStore}>
         <View style={{flex: 1}}>
           <MobileStatusBar backgroundColor={purple} barStyle='light-content'/>
           <MainContainer />
