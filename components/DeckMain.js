@@ -5,10 +5,24 @@ import { NavigationActions }from 'react-navigation';
 import { deleteDeck } from '../actions';
 import TextButton from './TextButton';
 import { black, white } from '../utils/colors'
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from '../utils/helpers';
 
 const Decks = (props) => {
 
   const { deckId, deck, navigation, dispatch } = props;
+
+  const handleStartQuiz = () => {
+    clearLocalNotification()
+      .then(setLocalNotification)
+
+    navigation.navigate(
+      'Card',
+      { deckId }
+    );
+  }
 
   const handleDeleteDeck = () => {
     dispatch(deleteDeck(deckId));
@@ -36,10 +50,7 @@ const Decks = (props) => {
       />
       <TextButton 
         name={'Start Quiz'} 
-        onPress={() => navigation.navigate(
-          'Card',
-          { deckId }
-        )} 
+        onPress={handleStartQuiz} 
         buttonStyle={styles.submitButton}
         textStyle={styles.submitButtonText} 
       />

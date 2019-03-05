@@ -4,6 +4,7 @@ import { Constants } from 'expo';
 import { Provider } from 'react-redux';
 import createdStore from './store';
 import { purple } from './utils/colors';
+import { setLocalNotification } from './utils/helpers'; 
 import MainContainer from './components/MainContainer';
 
 function MobileStatusBar ({ backgroundColor, ...props }) {
@@ -15,6 +16,9 @@ function MobileStatusBar ({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
   render() {
     return (
       <Provider store={createdStore}>
